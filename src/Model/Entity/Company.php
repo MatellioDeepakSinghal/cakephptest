@@ -38,4 +38,13 @@ class Company extends Entity
     //           'dependent' => true
     //         )
     //       );
+
+    public $validate = array(
+        'company_email' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'You must enter a email address.'
+                ),
+            ),
+        );
 }

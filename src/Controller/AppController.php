@@ -43,6 +43,8 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        // $this->loadComponent('Auth');
+
     }
 
     /**
@@ -59,4 +61,22 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+
+    // public function beforeFilter(Event $event) {
+    //     $this->Auth->allow('add');
+    //     parent::beforeFilter($event);
+    //     $this->Auth->userModel = 'User';
+    //     $this->Auth->fields = array('username' => 'username', 'password' => 'password');
+    //     // print_r($this->Auth->fields);
+    //     $this->Auth->loginAction = array('admin' => false, 'controller' => 'users', 'action' => 'login');
+    //     $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'index');
+    // }
+    public function isAuthorized($user) {
+        echo '<pre>';
+        print_r($user);
+        if ($this->request->prefix === 'admin') {
+            return (bool)$user['role'] === 'admin';
+        }
+    }
+
 }

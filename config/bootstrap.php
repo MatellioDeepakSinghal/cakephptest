@@ -63,8 +63,16 @@ use Cake\Utility\Security;
  * that changes from configuration that does not. This makes deployment simpler.
  */
 try {
-    Configure::config('default', new PhpConfig());
-    Configure::load('app', 'default', false);
+    // $admin = explode('/',$_SERVER['REQUEST_URI']);
+    // if(in_array('admin', $admin)) {
+        // print_r($admin);
+        // Configure::config('default', new PhpConfig());
+        // Configure::load('app', 'default', false);
+    // } else {
+        Configure::config('default', new PhpConfig());
+        Configure::load('app', 'default', false);
+    // }
+    
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }

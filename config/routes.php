@@ -47,13 +47,15 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
+
+
     $routes->connect('/', ['controller' => 'Companies', 'action' => 'index', 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
+    // $routes->
     /**
      * Connect catchall routes for all controllers.
      *
@@ -71,6 +73,28 @@ Router::scope('/', function ($routes) {
      * routes you want in your application.
      */
     $routes->fallbacks('DashedRoute');
+});
+
+Router::prefix('admin', function ($routes) {
+    // echo '<pre>';
+    // print_r($routes);
+    /**
+     * Here, we are connecting '/' (base path) to a controller called 'Pages',
+     * its action called 'display', and we pass a param to select the view file
+     * to use (in this case, src/Template/Pages/home.ctp)...
+     */
+
+
+    // $routes->connect('/admin/', ['controller' => 'Users', 'action' => 'login', 'login']);
+
+    /**
+     * ...and connect the rest of 'Pages' controller's URLs.
+     */
+    // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+   $routes->connect('/admin/users/login', ['controller'=>'Users','action'=>'login', 'admin'=>true]);
+   $routes->connect('/admin/users/add', ['controller'=>'Users', 'action'=>'add', 'admin'=>true]);
+    $routes->fallbacks('InflectedRoute');
 });
 
 /**
