@@ -16,7 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-
+use Cake\I18n\I18n;
 /**
  * Application Controller
  *
@@ -27,7 +27,7 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-
+     // public $theme = 'Theme1';
     /**
      * Initialization hook method.
      *
@@ -55,6 +55,9 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+       
+        $this->viewBuilder()->theme('Theme1');
+        I18n::locale('de_DE');
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {

@@ -52,8 +52,13 @@ class CompaniesTable extends Table
     {
         $validator
             ->requirePresence('company_name', 'create')
-            ->notEmpty('company_name');
-
+            ->notEmpty('company_name')
+            ->add('comapany_name', [
+                'length' => [
+                    'rule' => ['minLength', 10],
+                    'message' => 'Name should be a minimum 10 characters',
+                ]
+            ]);
         $validator
             ->requirePresence('company_email', 'create')
             ->notEmpty('company_email');

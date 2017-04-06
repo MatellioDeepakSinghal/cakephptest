@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
 /**
  * Companies Controller
  *
@@ -48,8 +47,10 @@ class CompaniesController extends AppController
      */
     public function add()
     {
+       
         $company = $this->Companies->newEntity();
         if ($this->request->is('post')) {
+            
             $company = $this->Companies->patchEntity($company, $this->request->data);
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));

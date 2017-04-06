@@ -1,0 +1,5 @@
+msgid "Company"
+msgstr "Com"
+
+msgid "Companies"
+msgstr "Comas"

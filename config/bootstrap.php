@@ -218,3 +218,5 @@ Type::build('date')
 Type::build('datetime')
     ->useImmutable()
     ->useLocaleParser();
+
+Plugin::load('Theme1', ['bootstrap' => false, 'routes' => true]);
